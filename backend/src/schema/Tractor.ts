@@ -1,4 +1,4 @@
-import {model, Schema, Document } from 'mongoose'
+import {model, Schema} from 'mongoose'
 
 const TractorSchema = new Schema({
     id: String,
