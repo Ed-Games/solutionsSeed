@@ -2,13 +2,20 @@ import {Request, Response} from 'express'
 import { ITractor } from '../interfaces/ITractor'
 import Tractor from '../schema/Tractor'
 import { removeFile } from '../utils/removeFile'
+import ip from 'ip'
 
 class TractorController{
 
     public async index(request: Request, response: Response): Promise<Response>{
         try {
-            const tractors = await Tractor.find()
-            return response.json(tractors)
+            const tractors = await Tractor.find() as unknown[] as ITractor[]
+
+            const serializedTractors = tractors.map(tractor => {
+                tractor.image = `http://${ip.address()}:${process.env.PORT}/uploads/${tractor.image}`
+                return tractor
+            })
+            
+            return response.json(serializedTractors)
         } catch (error) {
             console.error(error)
             return response.sendStatus(500)
@@ -24,7 +31,7 @@ class TractorController{
                 return response.status(400).send('This name is already used, try using another name instead')
             }
 
-            const image = request.file? request.file.filename : 'default.png'
+            const image = request.file? request.file.filename : 'default.jpg'
 
             const createdTractor = await Tractor.create({
                 name,
@@ -49,7 +56,7 @@ class TractorController{
             if(!tractorToUpdate) return response.sendStatus(404)
 
             const tractorWithSameName = await Tractor.findOne({name:data.name}) as unknown as ITractor
-            if(tractorWithSameName) return response.status(400).send('This name is already used, try using another name instead')
+            if(tractorWithSameName && tractorWithSameName._id != tractorToUpdate._id) return response.status(400).send('This name is already used, try using another name instead')
 
             const image = request.file? request.file.filename : ''
 
@@ -81,6 +88,27 @@ class TractorController{
 
         } catch (error) {
             console.error(error)
+            return response.sendStatus(500)
+        }
+    }
+
+    public async detail(request: Request, response: Response): Promise<Response>{
+        try {
+            const {id} = request.params
+
+            const tractor = await Tractor.findOne({_id:id}) as unknown as ITractor
+
+            console.log(tractor)
+
+            if(!tractor) return response.sendStatus(404)
+
+            tractor.image = `http://${ip.address()}:${process.env.PORT}/uploads/${tractor.image}`
+
+            return response.json(tractor).status(200)
+
+        } catch (error) {
+            console.error(error)
+
             return response.sendStatus(500)
         }
     }
