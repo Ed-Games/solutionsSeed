@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  margin:0;
+  padding:0;
+  border:0;
+  background-color: #EFF1F0;
+}
+
+h1{
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 33px;
+  color: #4D6F80;
+}
+
+button{
+  border-radius: 8px;
+  border-color: none;
+  outline: none;
+  border: none;
+
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 19px;
+  color: #FFFFFF;
+
+  cursor: pointer;
+
+}
