@@ -24,10 +24,6 @@ export class ApiService{
     return this.httpClient.get<ITractor[]>(`${this.apiUrl}/tractors`)
   }
 
-  public getTractorDetail(id: string): Observable<ITractor>{
-    return this.httpClient.get<ITractor>(`${this.apiUrl}/tractors/${id}`)
-  }
-
   public createTractor(data: ITractor): Observable<ITractor>{
     return this.httpClient.post<ITractor>(`${this.apiUrl}/create/tractor`, data)
   }
