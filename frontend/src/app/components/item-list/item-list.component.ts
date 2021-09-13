@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ITractor } from 'src/app/interfaces/ITractor';
+import { ApiService } from 'src/app/services/apiService';
 
 @Component({
   selector: 'app-item-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemListComponent implements OnInit {
 
-  constructor() { }
+  tractors  : ITractor[] = []
+
+  constructor(public apiService : ApiService) {
+
+  }
 
   ngOnInit(): void {
+    this.getTractors()
+  }
+
+  public getTractors(){
+    this.apiService.getTractors().subscribe(tractors => {
+      this.tractors = tractors
+      console.log(tractors)
+    })
   }
 
 }
