@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal',
@@ -7,23 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  type: string = 'Register'
-
-  isVisible: boolean = false
-
-
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<ModalComponent>) { }
 
   ngOnInit(): void {
   }
 
-  public toggleModal(): void {
-    this.isVisible = !this.isVisible;
-    console.log('visibility changed:', this.isVisible);
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 
-  public setModalAsUpdate():void{
-    this.type= 'Update'
-  }
 
 }
