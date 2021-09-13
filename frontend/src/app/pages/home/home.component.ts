@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalComponent } from 'src/app/components/modal/modal.component';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  modal: ModalComponent = new ModalComponent();
+
 
   constructor() { }
 
