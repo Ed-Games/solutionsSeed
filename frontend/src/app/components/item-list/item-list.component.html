@@ -1,1 +1,12 @@
-<p>item-list works!</p>
+<div class="list" >
+  <div class="card-item" *ngFor="let tractor of tractors">
+    <img src={{tractor.image}} alt="imagem do trator">
+    <div class="info">
+      <div class="options">
+        <span>delete</span>
+        <span>edit</span>
+      </div>
+      <h2>{{tractor.name}}</h2>
+    </div>
+  </div>
+</div>
