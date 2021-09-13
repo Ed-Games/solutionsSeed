@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http'
 import { FeatherModule } from 'angular-feather';
 import {Trash2, Edit, Plus, X} from 'angular-feather/icons';
 import { ModalComponent } from './components/modal/modal.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -21,9 +23,16 @@ import { ModalComponent } from './components/modal/modal.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FeatherModule.pick({Trash2, Edit, Plus, X})
+    FeatherModule.pick({Trash2, Edit, Plus, X}),
+    NoopAnimationsModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
