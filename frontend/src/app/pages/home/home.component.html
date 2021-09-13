@@ -6,7 +6,7 @@
         <h1>Tratores Cadastrados:</h1>
         <div class='row'></div>
       </div>
-      <button (click)="modal.toggleModal()" >Adicionar novo item</button>
+      <button (click)="this.openDialog()">Adicionar novo item</button>
     </div>
   </header>
   <main>
@@ -14,4 +14,4 @@
   </main>
 </div>
 
-<app-modal *ngIf="modal.isVisible" ></app-modal>
+
