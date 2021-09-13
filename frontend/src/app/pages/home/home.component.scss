@@ -7,6 +7,7 @@
 
     img{
       max-height: 90px;
+      max-width: 100%;
     }
 
     .content{
@@ -21,7 +22,7 @@
 
         .row{
           border: 1px solid #D3E2E6;
-          width: 548px;
+          width: 550px;
         }
       }
 
@@ -49,4 +50,35 @@
   }
 }
 
+@media(max-width:775px){
+  .row{
+    max-width:450px;
+  }
+}
+
+@media(max-width:670px){
+  .content{
+    flex-direction: column !important;
+
+    button{
+      margin-top: 10px;
+    }
+  }
+}
+
+@media(max-width:540px){
+  .row{
+    max-width: 350px;
+  }
+}
+
+@media(max-width:440px){
+  .row{
+    display: none;
+  }
+
+  .content{
+    align-items: center;
+  }
+}
 
