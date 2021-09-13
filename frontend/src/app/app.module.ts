@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import {HttpClientModule} from '@angular/common/http'
+import { FeatherModule } from 'angular-feather';
+import {Trash2, Edit} from 'angular-feather/icons';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {HttpClientModule} from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FeatherModule.pick({Trash2, Edit})
   ],
   providers: [],
   bootstrap: [AppComponent]
