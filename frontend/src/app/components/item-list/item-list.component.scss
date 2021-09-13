@@ -42,6 +42,20 @@
         align-self: center;
 
       }
+
+      .trash{
+        color:#E36363;
+        &:hover{
+          color:#EB4646
+        };
+      }
+
+      .edit{
+        color:#66CC9B;
+        &:hover{
+          color:#2EAE71;
+        };
+      }
     }
   }
 }
