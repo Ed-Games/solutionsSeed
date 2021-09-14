@@ -8,9 +8,9 @@ import { ITractor } from "../interfaces/ITractor"
 })
 
 export class ApiService{
-  apiUrl= 'http://10.0.0.105:3333'
+  private apiUrl= 'http://10.0.0.105:3333'
 
-  httpOptions= {
+  private httpOptions= {
     headers: new HttpHeaders({
       'content-type': 'application/json',
     }),
@@ -25,11 +25,11 @@ export class ApiService{
   }
 
   public createTractor(data: ITractor): Observable<ITractor>{
-    return this.httpClient.post<ITractor>(`${this.apiUrl}/create/tractor`, data)
+    return this.httpClient.post<ITractor>(`${this.apiUrl}/create/tractor`, data, this.httpOptions)
   }
 
   public updateTractor(data: ITractor): Observable<void>{
-    return this.httpClient.put<void>(`${this.apiUrl}/tractors/${data._id}`, data)
+    return this.httpClient.put<void>(`${this.apiUrl}/tractors/${data._id}`, data, this.httpOptions)
   }
 
   public deleteTractor(id: string): Observable<void>{
