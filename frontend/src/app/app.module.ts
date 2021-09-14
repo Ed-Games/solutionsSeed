@@ -12,14 +12,17 @@ import { ModalComponent } from './components/modal/modal.component'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog'
 import {MatInputModule} from '@angular/material/input'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropzoneComponent } from './components/dropzone/dropzone.component'
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ItemListComponent,
-    ModalComponent
+    ModalComponent,
+    DropzoneComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     MatDialogModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule
   ],
   providers: [
     {

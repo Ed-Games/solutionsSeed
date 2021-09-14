@@ -4,9 +4,7 @@
     <h1>Cadastrar novo trator</h1>
     <h2>Dados</h2>
     <form [formGroup]="registerForm">
-      <div class="dropzone">
-        <i-feather class="plus" name="plus"></i-feather>
-      </div>
+      <app-dropzone></app-dropzone>
       <label>Nome</label>
       <input matInput formControlName="name" name="name" type="text">
       <button (click)="this.submitForm()" class="submit">
