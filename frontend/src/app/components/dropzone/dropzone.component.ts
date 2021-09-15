@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-dropzone',
@@ -9,16 +9,17 @@ export class DropzoneComponent implements OnInit {
 
   files: File[] = [];
 
+  @Output() fileSelected = new EventEmitter<File>()
+
   constructor() { }
 
 
   onSelect(event:any) {
-    console.log(event);
     this.files.push(...event.addedFiles);
+    this.fileSelected.emit(this.files[0]);
   }
 
   onRemove(event: any) {
-    console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
 
