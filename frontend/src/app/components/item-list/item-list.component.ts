@@ -22,7 +22,6 @@ export class ItemListComponent implements OnInit {
   public getTractors(){
     this.apiService.getTractors().subscribe(tractors => {
       this.tractors = tractors
-      console.log(tractors)
     })
   }
 
