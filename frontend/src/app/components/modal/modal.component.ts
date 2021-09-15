@@ -32,11 +32,17 @@ export class ModalComponent implements OnInit {
   }
 
   submitForm(): void {
+    if(!this.registerForm.value.name){
+      alert('Você não pode criar um trator sem nome')
+      return
+    }
+
     const data = new FormData()
     data.append('image', this.image)
     data.append('name', this.registerForm.value.name)
     this.apiService.createTractor(data as any).subscribe(response => {})
     this.closeDialog()
+
   }
 
   addImageToFormData(image: any): void {
