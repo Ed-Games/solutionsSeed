@@ -1,12 +1,16 @@
 <div class="overlay">
   <div class="content">
     <i-feather (click)="this.closeDialog()"  class="x-close" name="x"></i-feather>
-    <h1>Cadastrar novo trator</h1>
+    <h1>{{this.data?.type == 'update'? 'Atualizar Dados': 'Cadastrar novo trator'}}</h1>
     <h2>Dados</h2>
     <form [formGroup]="registerForm">
-      <app-dropzone (fileSelected)="this.addImageToFormData($event)" ></app-dropzone>
+      <div class="image-preview" *ngIf="this.data?.tractor.image" >
+        <img src={{this.data?.tractor.image}} alt="imagem do trator {{this.data?.tractor.name}}" />
+      </div>
+      <app-dropzone *ngIf="!this.data?.tractor?.image" (fileSelected)="this.addImageToFormData($event)" ></app-dropzone>
       <label>Nome</label>
-      <input matInput formControlName="name" name="name" type="text">
+      <input [(ngModel)]="this.data.tractor.name" *ngIf="this.data?.type=='update'" matInput formControlName="name" name="name" type="text">
+      <input *ngIf="this.data?.type!='update'" matInput formControlName="name" name="name" type="text">
       <button (click)="this.submitForm()" class="submit">
         Cadastrar
       </button>
