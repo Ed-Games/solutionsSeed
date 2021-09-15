@@ -13,6 +13,7 @@ export class ApiService{
   private httpOptions= {
     headers: new HttpHeaders({
       'content-type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }),
   }
 
@@ -25,6 +26,7 @@ export class ApiService{
   }
 
   public createTractor(data: ITractor): Observable<ITractor>{
+    console.log('form data: ', data)
     return this.httpClient.post<ITractor>(`${this.apiUrl}/create/tractor`, data, this.httpOptions)
   }
 
