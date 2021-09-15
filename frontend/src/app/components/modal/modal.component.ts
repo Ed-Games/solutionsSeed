@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ITractor } from 'src/app/interfaces/ITractor';
 import { ApiService } from 'src/app/services/apiService';
 
@@ -17,10 +17,12 @@ export class ModalComponent implements OnInit {
 
   private image: File = {} as File;
 
-  constructor(public dialogRef: MatDialogRef<ModalComponent>, private apiService: ApiService) { }
+
+  constructor(public dialogRef: MatDialogRef<ModalComponent>, private apiService: ApiService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    console.log('form built')
+    if(this.data.tractor) console.log(this.data.tractor);
+
     this.registerForm = this.formBuilder.group({
       image: [File],
       name: ['', Validators.required]
