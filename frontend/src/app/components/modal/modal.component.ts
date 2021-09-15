@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ITractor } from 'src/app/interfaces/ITractor';
@@ -22,29 +22,21 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     console.log('form built')
     this.registerForm = this.formBuilder.group({
-      image: [''],
+      image: [File],
       name: ['', Validators.required]
     })
   }
 
   closeDialog(): void {
-    this.dialogRef.close();
+    this.dialogRef.close()
   }
 
   submitForm(): void {
-    this.dialogRef.close();
-    let data = new FormData();
-    data.append('name', this.registerForm.value.name);
-    data.append('image', {
-      name: `${this.registerForm.value.name}.jpg`,
-      type: 'image/jpg',
-      url: this.image.name
-    } as any)
-
-    console.log('data in submitForm: ', {image: this.image, name: this.registerForm.value.name})
-
-    this.apiService.createTractor(data as unknown as ITractor).subscribe(response => {})
-
+    const data = new FormData()
+    data.append('image', this.image)
+    data.append('name', this.registerForm.value.name)
+    this.apiService.createTractor(data as any).subscribe(response => {})
+    this.closeDialog()
   }
 
   addImageToFormData(image: any): void {
