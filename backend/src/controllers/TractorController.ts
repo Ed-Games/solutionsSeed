@@ -64,7 +64,7 @@ class TractorController{
                 removeFile(tractorToUpdate.image)
                 await Tractor.updateOne({_id: id}, {...data, image})
             } else{
-                await Tractor.updateOne({id: id}, data)
+                await Tractor.updateOne({id: id}, {name: data.name})
             }
         
             return response.sendStatus(204)
