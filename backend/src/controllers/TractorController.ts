@@ -49,27 +49,24 @@ class TractorController{
     public async update(request: Request, response: Response): Promise<Response>{
         try {
             const {id} = request.params
-            const data: ITractor = request.body
+            const {name}: ITractor = request.body
 
-            const tractorToUpdate = await Tractor.findById(id) as unknown as ITractor
+            const exists = await Tractor.findById(id) as unknown as ITractor
 
-            if(!tractorToUpdate) return response.sendStatus(404)
+            if(!exists) return response.sendStatus(404)
 
-            const tractorWithSameName = await Tractor.findOne({name:data.name}) as unknown as ITractor
-            if(tractorWithSameName && tractorWithSameName._id != tractorToUpdate._id) return response.status(400).send('This name is already used, try using another name instead')
-
-            const image = request.file? request.file.filename : ''
-
-            if(image) {
-                removeFile(tractorToUpdate.image)
-                await Tractor.updateOne({_id: id}, {...data, image})
+            if(request.file){
+                removeFile(exists.image) 
+                await Tractor.findByIdAndUpdate({_id: id}, {name, image: request.file.filename})
             } else{
-                await Tractor.updateOne({id: id}, {name: data.name})
-            }
+                await Tractor.findByIdAndUpdate({_id: id}, {name})
+            } 
         
             return response.sendStatus(204)
 
         } catch (error) {
+            console.log("error:",error)
+            if(error.codeName ==="DuplicateKey") return response.status(400).send('This name is already used, try using another name instead')
             return response.sendStatus(500)
         }
     }
@@ -78,11 +75,13 @@ class TractorController{
         try {
             const {id} = request.params
 
-            const tractorToDelete = await Tractor.findById(id)
+            const tractorToDelete = await Tractor.findById(id) as unknown as ITractor
 
             if(!tractorToDelete) return response.sendStatus(404)
 
             await Tractor.deleteOne({_id: id})
+
+            removeFile(tractorToDelete.image)
 
             return response.sendStatus(204)
 
