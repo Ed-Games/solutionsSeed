@@ -1,0 +1,51 @@
+.confirm-overlay{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.89);
+
+  .confirm-modal-content{
+    width: 436px;
+    height: 150px;
+    background: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 64px;
+
+    .button-area{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top:50px;
+
+      .cancel{
+        background: #70D0A0;
+        width: 194px;
+        height: 56px;
+        transition: 0.2s;
+
+        &:hover{
+          background: #79E1AF;
+        }
+      }
+
+      .confirm{
+        background: #D92828;
+        width: 194px;
+        height: 56px;
+        transition: 0.2s;
+
+        &:hover{
+          background:#EB4646;
+        }
+      }
+    }
+  }
+}
