@@ -38,7 +38,7 @@ MongoDb is also required
 
 If you have all installed, follow this steps in your terminal:
 
-> git clone https://github.com/Ed-Games/ItsCakeTime.git
+> git clone https://github.com/Ed-Games/solutionsSeed.git
 
 Add a  `.env` file in /backend folder and create this variable to connect to your database.
 
