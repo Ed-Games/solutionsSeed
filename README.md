@@ -68,18 +68,18 @@ Please, if you are going to create another project with the same images and artw
 
 ## 🖼️ Images
 <h1 align="center">
-    <img alt="Home" src="./images/Home.png" width="400px" />
+    <img alt="Home" src="./images/Home.png" width="700px" />
 </h1>
 <h1 align="center">
-    <img alt="Register" src="./images/Register.png" width="400px" />
+    <img alt="Register" src="./images/Register.png" width="700px" />
 </h1>
 <h1 align="center">
-    <img alt="Register with filled fields" src="./images/RegisterFilled.png" width="400px" />
+    <img alt="Register with filled fields" src="./images/RegisterFilled.png" width="700px" />
 </h1>
 <h1 align="center">
-    <img alt="Update" src="./images/Update.png" width="400px" />
+    <img alt="Update" src="./images/Update.png" width="700px" />
 </h1>
 <h1 align="center">
-    <img alt="Delete" src="./images/Delete.png" width="400px" />
+    <img alt="Delete" src="./images/Delete.png" width="700px" />
 </h1>
 
