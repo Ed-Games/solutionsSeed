@@ -9,6 +9,8 @@ import { ModalComponent } from 'src/app/components/modal/modal.component';
 })
 export class HomeComponent implements OnInit {
 
+  public tempData: any;
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed')
+      document.location.reload()
     });
   }
 

@@ -42,7 +42,7 @@ export class ItemListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log("getting data....")
       this.getTractors()
-      console.log(this.tractors)
+      document.location.reload()
     });
   }
 
