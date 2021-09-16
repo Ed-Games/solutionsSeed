@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ITractor } from 'src/app/interfaces/ITractor';
 import { ApiService } from 'src/app/services/apiService';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -13,7 +14,7 @@ export class ItemListComponent implements OnInit {
 
   tractors  : ITractor[] = []
 
-  constructor(public apiService : ApiService, public dialog: MatDialog ) {
+  constructor(public apiService : ApiService, public dialog: MatDialog, public confirmDialog : MatDialog) {
 
   }
 
@@ -27,7 +28,21 @@ export class ItemListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log("getting data....")
+      this.getTractors()
+      console.log(this.tractors)
+    });
+  }
+
+  openConfirmDialog(id: string|undefined): void {
+    const dialogRef = this.dialog.open(ConfirmModalComponent,{
+      data: {id: id},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("getting data....")
+      this.getTractors()
+      console.log(this.tractors)
     });
   }
 
