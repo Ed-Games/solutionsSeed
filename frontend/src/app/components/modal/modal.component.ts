@@ -45,9 +45,27 @@ export class ModalComponent implements OnInit {
     data.append('image', this.image)
     data.append('name', this.registerForm.value.name)
     if(this.data?.type!=="update"){
-      this.apiService.createTractor(data as any).subscribe(response => {})
+      this.apiService.createTractor(data as any).subscribe((response: ITractor) => {}, (error:any) =>{
+        if(error){
+          console.log(error.status);
+          if(error.status==400) {
+            alert('Um item com esse nome já existe, escolha outro por favor')
+          } else{
+            alert('Um erro inesperado ocorreu, tente mais tarde')
+          }
+        }
+      })
     } else{
-      this.apiService.updateTractor(data as any, this.data.tractor._id).subscribe(response => {})
+      this.apiService.updateTractor(data as any, this.data.tractor._id).subscribe((response: ITractor) => {}, (error:any) =>{
+        if(error){
+          console.log(error.status);
+          if(error.status==400) {
+            alert('Um item com esse nome já existe, escolha outro por favor')
+          } else{
+            alert('Um erro inesperado ocorreu, tente mais tarde')
+          }
+        }
+      })
     }
     this.closeDialog()
 

@@ -24,15 +24,15 @@ export class ApiService{
     return this.httpClient.get<ITractor[]>(`${this.apiUrl}/tractors`)
   }
 
-  public createTractor(data: ITractor): Observable<ITractor>{
+  public createTractor(data: ITractor): Observable<ITractor> | any{
     return this.httpClient.post<ITractor>(`${this.apiUrl}/create/tractor`, data, this.httpOptions)
   }
 
-  public updateTractor(data: ITractor, id: string): Observable<void>{
+  public updateTractor(data: ITractor, id: string): Observable<void> | any{
     return this.httpClient.put<void>(`${this.apiUrl}/tractors/${id}`, data, this.httpOptions)
   }
 
-  public deleteTractor(id: string): Observable<void>{
+  public deleteTractor(id: string): Observable<void> | any{
     return this.httpClient.delete<void>(`${this.apiUrl}/tractors/${id}`)
   }
 
