@@ -4,10 +4,11 @@
     <h1>{{this.data?.type == 'update'? 'Atualizar Dados': 'Cadastrar novo trator'}}</h1>
     <h2>Dados</h2>
     <form [formGroup]="registerForm">
-      <div class="image-preview" *ngIf="this.data?.tractor.image" >
+      <div class="image-preview" *ngIf="this.hasImage" >
+        <i-feather (click)="this.hasImage=false"  class="x-close-white" name="x"></i-feather>
         <img src={{this.data?.tractor.image}} alt="imagem do trator {{this.data?.tractor.name}}" />
       </div>
-      <app-dropzone *ngIf="!this.data?.tractor?.image" (fileSelected)="this.addImageToFormData($event)" ></app-dropzone>
+      <app-dropzone *ngIf="!this.hasImage" (fileSelected)="this.addImageToFormData($event)" ></app-dropzone>
       <label>Nome</label>
       <input [(ngModel)]="this.data.tractor.name" *ngIf="this.data?.type=='update'" matInput formControlName="name" name="name" type="text">
       <input *ngIf="this.data?.type!='update'" matInput formControlName="name" name="name" type="text">
@@ -18,3 +19,4 @@
 
   </div>
 </div>
+
