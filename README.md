@@ -58,7 +58,7 @@ Let the server runing and open another terminal in the project folder.
 > npm start
 
 
-## 📝 Licença
+## 📝 License
 
 This project is licensed under the MIT license. See the [LICENSE](/LICENSE) file for details.
 
