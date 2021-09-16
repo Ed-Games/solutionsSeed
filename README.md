@@ -40,11 +40,11 @@ If you have all installed, follow this steps in your terminal:
 
 > git clone https://github.com/Ed-Games/ItsCakeTime.git
 
-Para conectar em seu mongoDb, adicione um arquivo `.env` em /backend e crie a seguinte variável.
+Add a  `.env` file in /backend folder and create this variable to connect to your database.
 
 ```.env
 
-NODE_DATABASE_CONNECTION_STRING="url do seu banco de dados mongoDb"
+NODE_DATABASE_CONNECTION_STRING="your mongoDB connection string"
 
 ```
 > cd backend
