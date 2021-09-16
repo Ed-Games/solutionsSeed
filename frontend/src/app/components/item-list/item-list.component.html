@@ -3,7 +3,7 @@
     <img src={{tractor.image}} alt="imagem do trator">
     <div class="info">
       <div class="options">
-        <i-feather name="trash-2" class="trash"></i-feather>
+        <i-feather (click)="this.openConfirmDialog(tractor._id)" name="trash-2" class="trash"></i-feather>
         <i-feather (click)="this.openDialog(tractor)" name="edit" class="edit"></i-feather>
       </div>
       <h2>{{tractor.name}}</h2>
