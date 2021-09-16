@@ -17,11 +17,13 @@ export class ModalComponent implements OnInit {
 
   private image: File = {} as File;
 
+  public hasImage : boolean = false;
+
 
   constructor(public dialogRef: MatDialogRef<ModalComponent>, private apiService: ApiService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    if(this.data.tractor) console.log(this.data.tractor);
+    if(this.data?.tractor) this.hasImage =true;
 
     this.registerForm = this.formBuilder.group({
       image: [File],
@@ -35,14 +37,18 @@ export class ModalComponent implements OnInit {
 
   submitForm(): void {
     if(!this.registerForm.value.name){
-      alert('Você não pode criar um trator sem nome')
+      alert('O Trator precisa ter um nome')
       return
     }
 
     const data = new FormData()
     data.append('image', this.image)
     data.append('name', this.registerForm.value.name)
-    this.apiService.createTractor(data as any).subscribe(response => {})
+    if(this.data?.type!=="update"){
+      this.apiService.createTractor(data as any).subscribe(response => {})
+    } else{
+      this.apiService.updateTractor(data as any, this.data.tractor._id).subscribe(response => {})
+    }
     this.closeDialog()
 
   }
