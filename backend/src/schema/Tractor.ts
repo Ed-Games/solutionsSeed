@@ -1,8 +1,7 @@
 import {model, Schema} from 'mongoose'
 
 const TractorSchema = new Schema({
-    id: String,
-    name: String,
+    name: {type:String, required:true, unique:true, dropDups:true},
     image: String,
 }, {
     timestamps: true,
