@@ -28,8 +28,8 @@ export class ApiService{
     return this.httpClient.post<ITractor>(`${this.apiUrl}/create/tractor`, data, this.httpOptions)
   }
 
-  public updateTractor(data: ITractor): Observable<void>{
-    return this.httpClient.put<void>(`${this.apiUrl}/tractors/${data._id}`, data, this.httpOptions)
+  public updateTractor(data: ITractor, id: string): Observable<void>{
+    return this.httpClient.put<void>(`${this.apiUrl}/tractors/${id}`, data, this.httpOptions)
   }
 
   public deleteTractor(id: string): Observable<void>{
