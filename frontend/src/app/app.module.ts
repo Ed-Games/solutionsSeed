@@ -15,6 +15,7 @@ import {MatInputModule} from '@angular/material/input'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropzoneComponent } from './components/dropzone/dropzone.component'
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     HomeComponent,
     ItemListComponent,
     ModalComponent,
-    DropzoneComponent
+    DropzoneComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
