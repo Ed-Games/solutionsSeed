@@ -1,3 +1,4 @@
+import { ITractor } from 'src/app/interfaces/ITractor';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/apiService';
@@ -19,7 +20,14 @@ export class ConfirmModalComponent implements OnInit {
   }
 
   deleteTractor(): void {
-    this.apiService.deleteTractor(this.id.id).subscribe(data => {})
+    this.apiService.deleteTractor(this.id.id).subscribe((response: ITractor) => {}, (error:any) =>{
+      if(error){
+        console.log(error.status);
+        if(error.status==404) {
+          alert('O item não foi encontrado. A página será atualizada')
+        }
+      }
+    })
 
     this.closeDialog()
   }
